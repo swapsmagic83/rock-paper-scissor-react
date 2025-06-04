@@ -1,46 +1,39 @@
 import React, {useState} from "react";
 const GamePage = () =>{
     const initial = ['ROCK','PAPER','SCISSOR']
-    // let random = Math.floor(Math.random()* initial.length)
     const [userChoice, setUserChoice] = useState('')
     const [compChoice, setCompChoice] = useState('')
     const [userScore, setUserScore] = useState(0)
     const [compScore, setCompScore] =useState(0)
     const [winner,setWinner] = useState('')
-    // const [isDisabled,setIsDisabled] = useState(false)
+  
     
     const handleClick = (e) =>{
-       
         let random = Math.floor(Math.random()* initial.length)
         setUserChoice(e.target.value)
-        setCompChoice(initial[random])
-        
-        
+        setCompChoice(initial[random])    
     }
     
     const handleSubmit = (e) =>{
         e.preventDefault()
-      
-        
         if (( userChoice === "ROCK" && compChoice === "SCISSOR") ||
             (userChoice === "SCISSOR" && compChoice === "PAPER") ||
             (userChoice ==="PAPER" && compChoice === "ROCK")){
-            setUserScore(userScore+1)
-           
+            setUserScore(userScore+1)   
         }
         if ((compChoice === "ROCK" && userChoice === "SCISSOR") ||
            (compChoice === "SCISSOR" && userChoice === "PAPER") ||
          (compChoice ==="PAPER" && userChoice === "ROCK")){
             setCompScore(compScore+1)
         }
-        if (userScore === 5){
+        if (userScore === 20){
             setWinner('You')
-            // setIsDisabled(true)
+            
             return
         }
-        else if (compScore === 5){
+        else if (compScore === 20){
             setWinner('Comp')
-            // setIsDisabled(true)
+            
             return
         }
         
